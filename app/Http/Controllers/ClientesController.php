@@ -49,31 +49,50 @@ class ClientesController extends Controller
             return redirect()->route('clientes.indexPage', ['page' => 1])->with('error', 'El cliente no existe');
         }
     }
-
 /**
  * @OA\Post(
  *     path="/rest/pedidos/crear",
  *     summary="Crea un nuevo pedido por API",
- *     @OA\Parameter(
- *         name="request",
- *         in="path",
- *         description="Request de los pedidos",
+ *     @OA\RequestBody(
+ *         description="Es un post, se necesita 'email', 'descripcion' y una lista de ID's llamada 'id' de productos de la forma 'X1-X2-X3-...-Xn' donde Xi es el ID de un producto.",
  *         required=true,
- *         @OA\Schema(
- *             type="request"
- *         )
+ *         @OA\JsonContent(
+ *             @OA\Schema(
+ *                 type="object",
+ *                 required={"email", "descripcion", "ids"},
+ *                 @OA\Property(
+ *                     property="email",
+ *                     type="string",
+ *                     format="email",
+ *                     description="Correo electrónico del cliente que realiza el pedido"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="descripcion",
+ *                     type="string",
+ *                     description="Descripción del pedido"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="ids",
+ *                     type="string",
+ *                     description="Lista de IDs de productos que se incluirán en el pedido separados por guiones",
+ *                     example="X1-X2-X3",
+ *                 ),
+ *             ),
+ *         ),
  *     ),
  *     @OA\Response(
  *         response=422,
- *         description="Error al crear pedido")
- *     ,
+ *         description="Error al crear pedido"
+ *     ),
  *     @OA\Response(
  *         response=200,
- *         description="Pedido creado con exito"),
+ *         description="Pedido creado con exito"
+ *     ),
  *     @OA\Response(
  *         response=500,
- *         description="Error al crear pedido")
+ *         description="Error al crear pedido"
  *     )
+ * )
  */
  public function storeByAPI(Request $request){
 
