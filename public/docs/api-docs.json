@@ -101,7 +101,29 @@
                     "required": true,
                     "content": {
                         "application/json": {
-                            "schema": {}
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                  "email",
+                                  "descripcion",
+                                  "ids"
+                                ],
+                                "properties": {
+                                  "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "user@example.com"
+                                  },
+                                  "descripcion": {
+                                    "type": "string",
+                                    "example": "Descripción del pedido"
+                                  },
+                                  "ids": {
+                                    "type": "string",
+                                    "example": "X1-X2-X3"
+                                  }
+                                }
+                            }
                         }
                     }
                 },

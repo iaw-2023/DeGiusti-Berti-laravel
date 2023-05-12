@@ -64,18 +64,21 @@ class ClientesController extends Controller
  *                     property="email",
  *                     type="string",
  *                     format="email",
- *                     description="Correo electrónico del cliente que realiza el pedido"
+ *                     description="Correo electrónico del cliente que realiza el pedido",
+ *                     default="email@hotmail.com"
  *                 ),
  *                 @OA\Property(
  *                     property="descripcion",
  *                     type="string",
- *                     description="Descripción del pedido"
+ *                     description="Descripción del pedido",
+ *                     default="Esta es la descripcion de un pedido"
  *                 ),
  *                 @OA\Property(
  *                     property="ids",
  *                     type="string",
  *                     description="Lista de IDs de productos que se incluirán en el pedido separados por guiones",
  *                     example="X1-X2-X3",
+ *                     default="1-2-3"
  *                 ),
  *             ),
  *         ),
